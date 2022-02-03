@@ -33,12 +33,14 @@ router.post(
 ],
 async (req, res) => {      
     // set errors and validationresult which takes in the request
-    const errors = validationResult(req);   
+    const errors = validationResult(req);  
+
     // if any of the required info is missing it will be a bad request
     if (!errors.isEmpty()) {    
     //which is 400 and array is a method here to send the errors back
         return res.status(400).json({errors: errors.array() }); 
     }
+
     //pulling name email & pw from req.body
     const { name, email, password} = req.body;  
 
@@ -48,8 +50,8 @@ async (req, res) => {
         let user= await User.findOne({ email}); 
 
         if (user) {
-            return res
-            .status (400)
+            return res+
+            res.status (400)
             .json({errors: [ { msg: 'User already exists'}]});
         }
 
@@ -57,7 +59,7 @@ async (req, res) => {
     const avatar = gravatar.url(email, {    
         s: '200',  // default size
         r: 'pg',   // rating
-        d: 'ma'    //default
+        d: 'mm'    //default
     });
 
     //user which is created above and set tat to new User
@@ -72,20 +74,24 @@ async (req, res) => {
 
     // salt is a variable , 10 ia weight(round) more we use pw will be secure more
     const salt = await bcrypt.genSalt(10);    
+
     // used to create a hash password 
-    user.password = await bcrypt.hash(password, salt);   
+    user.password = await bcrypt.hash(password, salt);  
+
     // saving the password to database
     await user. save();   
-    // payload is the object. 
+
+    // payload is the object. As we need user id for jwt getting userid
     const payload = {    
         user: {
             id: user.id
         }
     };
 
-    jwt.sign(
+    // for jsonwebtoken signature we need payload and jwtsecret..
+    jwt.sign( 
         payload,
-        config.get('jwtSecret'),
+        config.get('jwtSecret'), 
         { expiresIn: 360000 },
         (err, token)=> {
             if(err) throw err;
