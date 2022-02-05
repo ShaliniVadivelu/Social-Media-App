@@ -33,8 +33,8 @@ const Register = () => {
       <p className="my-1">
         Already have an account? <a href="login.html">Sign In</a>
       </p>
-   
    </Fragment>;
+   
 };
 
 export default Register; 
