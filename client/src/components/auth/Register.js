@@ -1,6 +1,8 @@
 import React, {Fragment, useState} from 'react'; 
 // as we are using function, importing useState
 
+import axious from 'axios';
+
 const Register = () => {
   const  [formData, setFormData] = useState({
     name: '',
@@ -10,20 +12,40 @@ const Register = () => {
   });
 
   const { name, email, password,password2 } = formData;
-  
+
 // change the name to value of the input, instead of using name, can use e.taget.name..
   const onChange = e => 
     setFormData({ ...formData, [e.target.name]: e.target.value}); 
 
 // onSubmit function
-  const onSubmit = e => {     
+  const onSubmit =async  e => {     
     e.preventDefault();
     if(password !== password2) {
       console.log('Passwords do not match')
     } else {
-      console.log(formData);
+      // creating a new user
+      const newUser = {
+        name,
+        email,
+        password
+      }
+
+      try {
+        const config ={
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        };
+
+        const body = JSON.stringify(newUser);
+        // making a post request to get the token
+        const res = await axios.post('/api/users', body, config);        
+        console.log(res, data);      
+      } catch (err) {
+        console.error(err.response.data);
+      }
     }
-  }
+  };
    return <Fragment> 
    <h1 className="large text-primary">Sign Up</h1>
       <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
