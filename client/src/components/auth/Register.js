@@ -10,12 +10,21 @@ const Register = () => {
 
   const { name, email, password,password2 } = formData;
 
-  const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value}); // change the name to value of the input, instead of using name, can use e.taget.name..
+  const onChange = e => 
+    setFormData({ ...formData, [e.target.name]: e.target.value}); // change the name to value of the input, instead of using name, can use e.taget.name..
 
+  const onSubmit = e => {     // onSubmit function
+    e.preventDefault();
+    if(password !== password2) {
+      console.log('Passwords do not match')
+    } else {
+      console.log(formData);
+    }
+  }
    return <Fragment> 
    <h1 className="large text-primary">Sign Up</h1>
       <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
-      <form className="form" action="create-profile.html">
+      <form className="form" onSubmit ={e => onSubmit(e)}>
         <div className="form-group">
           <input 
           type="text" 
@@ -46,7 +55,8 @@ const Register = () => {
             name="password"
             value={password} 
             onChange= {e=> onChange(e)} 
-            minLength="6"/>
+            minLength="6"
+          />
         </div>
         <div className="form-group">
           <input
@@ -55,7 +65,8 @@ const Register = () => {
             name="password2"
             value={password2} 
           onChange= {e=> onChange(e)}
-            minLength="6"/>
+            minLength="6"
+          />
         </div>
         <input type="submit" className="btn btn-primary" value="Register" />
       </form>
