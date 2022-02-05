@@ -1,6 +1,8 @@
 import React, {Fragment, useState} from 'react'; 
 // as we are using function, importing useState
 
+import { Link } from 'react-router-dom';
+
 const Register = () => {
   const  [formData, setFormData] = useState({
     name: '',
@@ -21,7 +23,7 @@ const Register = () => {
     if(password !== password2) {
       console.log('Passwords do not match')
     } else {
-      console.log('SUCESS');
+      console.log("SUCESS");
     }
   };
    return <Fragment> 
@@ -75,7 +77,7 @@ const Register = () => {
         <input type="submit" className="btn btn-primary" value="Register" />
       </form>
       <p className="my-1">
-        Already have an account? <a href="login.html">Sign In</a>
+        Already have an account? <Link to="/login">Sign In</Link>
       </p>
    </Fragment>;
    
