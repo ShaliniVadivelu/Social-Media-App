@@ -1,8 +1,6 @@
 import React, {Fragment, useState} from 'react'; 
 // as we are using function, importing useState
 
-import axios from 'axios';
-
 const Register = () => {
   const  [formData, setFormData] = useState({
     name: '',
@@ -23,27 +21,7 @@ const Register = () => {
     if(password !== password2) {
       console.log('Passwords do not match')
     } else {
-      // creating a new user
-      const newUser = {
-        name,
-        email,
-        password
-      }
-
-      try {
-        const config ={
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        };
-
-        const body = JSON.stringify(newUser);
-        // making a post request to get the token
-        const res = await axios.post('/api/users', body, config);        
-        console.log(res.data);      
-      } catch (err) {
-        console.error(err.response.data);
-      }
+      console.log('SUCESS');
     }
   };
    return <Fragment> 
@@ -62,7 +40,7 @@ const Register = () => {
         />
         </div>
         <div className="form-group">
-          <input 
+        <input 
           type="email" 
           placeholder="Email Address" 
           name="email" 
@@ -70,9 +48,9 @@ const Register = () => {
           onChange= {e=> onChange(e)} 
           required 
         />
-          <small className="form-text"
-            >This site uses Gravatar so if you want a profile image, use a
-            Gravatar email</small>
+          <small className="form-text">
+          This site uses Gravatar so if you want a profile image, use a Gravatar email
+          </small>
         </div>
         <div className="form-group">
           <input
