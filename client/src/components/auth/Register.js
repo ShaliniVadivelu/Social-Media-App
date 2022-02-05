@@ -1,4 +1,5 @@
-import React, {Fragment, useState} from 'react'; // as we are using function, importing useState
+import React, {Fragment, useState} from 'react'; 
+// as we are using function, importing useState
 
 const Register = () => {
   const  [formData, setFormData] = useState({
@@ -9,11 +10,13 @@ const Register = () => {
   });
 
   const { name, email, password,password2 } = formData;
-
+  
+// change the name to value of the input, instead of using name, can use e.taget.name..
   const onChange = e => 
-    setFormData({ ...formData, [e.target.name]: e.target.value}); // change the name to value of the input, instead of using name, can use e.taget.name..
+    setFormData({ ...formData, [e.target.name]: e.target.value}); 
 
-  const onSubmit = e => {     // onSubmit function
+// onSubmit function
+  const onSubmit = e => {     
     e.preventDefault();
     if(password !== password2) {
       console.log('Passwords do not match')
@@ -31,7 +34,8 @@ const Register = () => {
           placeholder="Name" 
           name="name" 
           value={name} 
-          onChange= {e=> onChange(e)}  // onChange function
+  // onChange function
+          onChange= {e=> onChange(e)}  
           required 
         />
         </div>
