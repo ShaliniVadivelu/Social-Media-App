@@ -1,7 +1,7 @@
 import React, {Fragment, useState} from 'react'; 
 // as we are using function, importing useState
 
-import axious from 'axios';
+import axios from 'axios';
 
 const Register = () => {
   const  [formData, setFormData] = useState({
@@ -40,7 +40,7 @@ const Register = () => {
         const body = JSON.stringify(newUser);
         // making a post request to get the token
         const res = await axios.post('/api/users', body, config);        
-        console.log(res, data);      
+        console.log(res.data);      
       } catch (err) {
         console.error(err.response.data);
       }
