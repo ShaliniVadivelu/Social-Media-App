@@ -10,6 +10,8 @@ const Register = () => {
 
   const { name, email, password,password2 } = formData;
 
+  const onChange = e => setFormData({ ...formData, name: e.target.value}); // change the name to value of the input
+
    return <Fragment> 
    <h1 className="large text-primary">Sign Up</h1>
       <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
@@ -20,6 +22,7 @@ const Register = () => {
           placeholder="Name" 
           name="name" 
           value={name} 
+          onChange= {e=> onChange(e)}
           required 
           />
         </div>
