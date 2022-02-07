@@ -1,0 +1,20 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import {connect } from 'react-redux';
+// alerts is a destructor here
+const Alert = ({ alerts}) => 
+//condition if the below cdn satisfied it will print corresponding alert type.here we have only one which is for pw.
+alerts !== null && alerts.length >0 && alerts.map(alert => {
+    <div key={alert.id} className ={'alert alert-${alert.alertType}'}
+});
+
+Alert.propTypes = {
+    alerts: PropTypes.array.isRequired
+
+}
+
+const mapStateToProps =  state => ({
+    alerts: state.alert
+})
+
+export default connect() (Alert);
