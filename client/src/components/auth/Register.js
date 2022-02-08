@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import { setAlert } from '../../actions/alert';
 import PropTypes from 'prop-types';
 
+import './App.css';
+
 const Register = ({ setAlert }) => { // instead of using props.setAlert we changed props to setAlert
   const  [formData, setFormData] = useState({
     name: '',
@@ -86,7 +88,7 @@ const Register = ({ setAlert }) => { // instead of using props.setAlert we chang
    
 };
 
-Register.propTypes ={
+Register.propTypes = {
   setAlert: PropTypes.func.isRequired
 }
 export default connect(
