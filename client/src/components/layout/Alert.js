@@ -5,7 +5,7 @@ import {connect } from 'react-redux';
 const Alert = ({ alerts}) => 
 //condition if the below cdn satisfied it will print corresponding alert type.here we have only one which is for pw.
 alerts !== null && 
-alerts.length >0 && 
+alerts.length >0 &&
 alerts.map(alert => {
     <div key={alert.id} className ={'alert alert-${alert.alertType}'}>
     {alert.msg}
@@ -21,7 +21,3 @@ const mapStateToProps =  state => ({
 })
 
 export default connect(mapStateToProps) (Alert);
-
-
-
-
