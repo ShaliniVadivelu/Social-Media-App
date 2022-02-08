@@ -9,7 +9,7 @@ const config = require ('config');
 field express-validator takes place and remain the user to fill it.*/
 const { check, validationResult } = require('express-validator'); 
 
-//to pull name, email etc., we need to use this line(pointing models user)
+//to pull name, email etc., pulling User model
 const User = require('../../models/User'); 
 
 // @route     POST api/users
@@ -50,7 +50,7 @@ async (req, res) => {
         let user= await User.findOne({ email}); 
 
         if (user) {
-            return res+
+            return res;
             res.status (400)
             .json({errors: [ { msg: 'User already exists'}]});
         }
@@ -81,7 +81,7 @@ async (req, res) => {
     // saving the password to database
     await user. save();   
 
-    // payload is the object. As we need user id for jwt getting userid
+    // payload is the object. As we need user id for jwt.. getting userid
     const payload = {    
         user: {
             id: user.id

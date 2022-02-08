@@ -1,4 +1,4 @@
-//importing mongoose module, mongosse is a ODM which manages the relationship b/w data and provides schema validation.
+//declaring mongoose module, mongosse is a ODM which manages the relationship b/w data and provides schema validation.
 const mongoose = require('mongoose'); 
 
 //defining schema, it represents the structure of the document                                        
