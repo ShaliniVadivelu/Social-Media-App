@@ -5,5 +5,5 @@ export const REGISTER_FAIL = 'REGISTER_FAIL';
 // userloaded and auth error: before using the token user has to be get authorised with their use id
 export const USER_LOADED = 'USER_LOADED';
 export const AUTH_ERROR = 'AUTH_ERROR';
-
-
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAIL = 'LOGIN_FAIL';
