@@ -7,7 +7,8 @@ import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
 
-const Register = ({ setAlert, register  }) => { // instead of using props.setAlert we changed props to setAlert
+// instead of using props.setAlert we changed props to setAlert
+const Register = ({ setAlert, register  }) => { 
   const  [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -25,9 +26,10 @@ const Register = ({ setAlert, register  }) => { // instead of using props.setAle
   const onSubmit =async  e => {     
     e.preventDefault();
     if(password !== password2) {
-      setAlert('Passwords do not match', 'danger');  // this msg willbe passed to action
+// this msg willbe passed to action
+      setAlert('Passwords do not match', 'danger');  
     } else {
-      //console.log("SUCESS");
+//console.log("SUCESS");
       register ({ name, email, password});
     }
   };
