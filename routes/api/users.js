@@ -73,6 +73,7 @@ async (req, res) => {
     // Encrypt password
 
     // salt is a variable , 10 ia weight(round) more we use pw will be secure more
+    // salt ia a key used to excrpt our data, here we give password.
     const salt = await bcrypt.genSalt(10);    
 
     // used to create a hash password 
