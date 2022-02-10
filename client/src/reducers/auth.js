@@ -4,7 +4,8 @@ import {
     USER_LOADED,
     AUTH_ERROR,
     LOGIN_SUCCESS,
-    LOGIN_FAIL
+    LOGIN_FAIL,
+    LOGOUT
 } from '../actions/types';
 
 const initialState = {
@@ -38,7 +39,8 @@ export default function(state = initialState, action) {
         case REGISTER_FAIL:
         case AUTH_ERROR:
         case LOGIN_FAIL:
-        //if register is failed need to remove anything in the storage, BOTH do same operation
+        case LOGOUT:
+        //if register is failed need to remove anything in the storage, allthe above type do same operation
             localStorage.removeItem('token');
             return  {
                 ...state,
