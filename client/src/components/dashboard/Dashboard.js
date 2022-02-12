@@ -11,7 +11,7 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
     useEffect (() => {
         getCurrentProfile();
     }, []);
-    // Displaying the user name, If user has profile it will has else has not
+    // Displaying the user name, If user has no profile it will ask us to clik the profile creation button to create profile
     return loading && profile === null ? <Spinner /> : <Fragment>
         <h1 className ="large text-primary"> Dashbaord</h1>
         <p className ="lead">
