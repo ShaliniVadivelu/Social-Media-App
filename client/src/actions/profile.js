@@ -22,3 +22,41 @@ export const getCurrentProfile = () => async dispatch => {
         });
     }
 };
+
+// Create or update profile
+// inorder to redirect to a client side route after submit the form, we use push method. Edit enable us to know whether use creating a new profile or modifying it.
+export const createProfile =(formData, history, edit= false) => async dispatch => {
+    try  {
+        const config = {
+            headers: {
+                'Content-Type' : 'application/json'
+            }
+        }
+
+        const res = await axios.post('/api/profile', formData, config);
+        dispatch ({
+            type: GET_PROFILE,
+            payload: res.data
+        });
+        // setAlert to notify us whether profile updated or created
+        dispatch (setAlert(edit ? 'Profile Updated' : 'Profile Created', 'success'));
+        
+        //if creating means have to redirect to dashboard
+        if(!edit) {
+            history.push ('/dashboard');
+        }
+
+    } catch (err) {
+        //if user forget anything tat will show in alert
+        const errors = err.response.data.errors;
+
+        if (errors) {
+            errors.forEach(error => dispatch (setAlert(error.msg, 'danger')));
+        }
+
+        dispatch ({
+            type: PROFILE_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status}
+        });
+    }
+}
