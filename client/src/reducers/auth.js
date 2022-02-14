@@ -5,7 +5,8 @@ import {
     AUTH_ERROR,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
-    LOGOUT
+    LOGOUT,
+    ACCOUNT_DELETED
 } from '../actions/types';
 
 const initialState = {
@@ -40,6 +41,7 @@ export default function(state = initialState, action) {
         case AUTH_ERROR:
         case LOGIN_FAIL:
         case LOGOUT:
+        case ACCOUNT_DELETED:
         //if register is failed need to remove anything in the storage, allthe above type do same operation
             localStorage.removeItem('token');
             return  {
