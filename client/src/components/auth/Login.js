@@ -12,7 +12,7 @@ const Login = ({ login, isAuthenticated }) => {
     password: ''
   });
 
-  const { email, password } = formData;
+const { email, password } = formData;
 
 // change the name to value of the input, instead of using name, can use e.taget.name..
   const onChange = e => 
@@ -57,7 +57,7 @@ const Login = ({ login, isAuthenticated }) => {
         <input type="submit" className="btn btn-primary" value="Login" />
       </form>
       <p className="my-1">
-      Don't have an account? <Link to="/login">Sign In</Link>
+      Don't have an account? <Link to="/login">Sign Up</Link>
     </p>
  </Fragment>
 )};
