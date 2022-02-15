@@ -1,4 +1,6 @@
+// importing the express application object
 const express = require('express');
+//using express to get a 'Router' object
 const router = express.Router();
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
@@ -9,7 +11,7 @@ const config = require ('config');
 field express-validator takes place and remain the user to fill it.*/
 const { check, validationResult } = require('express-validator'); 
 
-//to pull name, email etc., pulling User model
+//to pull name, email etc., pulling User module
 const User = require('../../models/User'); 
 
 // @route     POST api/users
@@ -46,28 +48,26 @@ async (req, res) => {
 
     try {
     // see if user exists
-    // it tells like await and findOne will earch the user by email
+    // it tells like await and findOne will search the user by email
         let user= await User.findOne({ email}); 
 
         if (user) {
-            return res;
-            res.status (400)
-            .json({errors: [ { msg: 'User already exists'}]});
+            return res.status (400).json({errors: [ { msg: 'User already exists'}]});
         }
 
     //Get users gravatar
     const avatar = gravatar.url(email, {    
         s: '200',  // default size
         r: 'pg',   // rating
-        d: 'mm'    //default
+        d: 'mm'    //default (give default image)
     });
 
-    //user which is created above and set tat to new User
+    //which is created above and set tat to new User
     user = new User({  
         name,
         email,
         avatar,
-        password
+        password     //here pw is nmo hasded
     });
 
     // Encrypt password
@@ -80,7 +80,7 @@ async (req, res) => {
     user.password = await bcrypt.hash(password, salt);  
 
     // saving the password to database
-    await user. save();   
+    await user.save();   
 
     // payload is the object. As we need user id for jwt.. getting userid
     const payload = {    
@@ -90,6 +90,7 @@ async (req, res) => {
     };
 
     // for jsonwebtoken signature we need payload and jwtsecret..
+    // for authorization we are using token. We can also use email & pw, instead of giving it everytime we use jwt to access all routes.
     jwt.sign( 
         payload,
         config.get('jwtSecret'), 
