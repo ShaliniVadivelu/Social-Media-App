@@ -34,6 +34,7 @@ const Profile =({
                 }
                 <div class="profile-grid my-1">
                     <ProfileTop profile={profile} />
+                    <ProfileAbout profile={profile} />
                 </div>
                 </Fragment>
             }
