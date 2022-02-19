@@ -76,7 +76,7 @@ const Profile =({
 
     );
 };
-Profile.proopTypes ={
+Profile.propTypes ={
     getProfileById: PropTypes.func.isRequired,
     profile: PropTypes.object.isRequired,
     auth:PropTypes.object.isRequired
