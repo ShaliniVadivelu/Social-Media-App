@@ -11,24 +11,25 @@ const ProfileEducation = ({ education: {
     from,
     description
 }
-}) => <div>
+}) => (
+    <div>
     <h3 className ="text-dark"> {school}</h3>
     <p> 
-        <Moment formt='YYYY/MM/DD'> {from} </Moment>-{!to ? 'Now' : <Moment format='YYYY/MM/DD'>{to} </Moment>}
+        <Moment format='YYYY/MM/DD'> {from} </Moment>-{!to ? 'Now' : <Moment format='YYYY/MM/DD'>{to} </Moment>}
     </p>
     <p>
-        <strong> Degree: </strong>
+        <strong> Degree: </strong> {degree}
     </p>
     <p>
-        <strong> Description </strong> {description}
+        <strong> Description </strong> {fieldofstudy}
     </p>
     <p>
         <strong> Field of Study </strong> {description}
     </p>
     </div>
-
+);
 ProfileEducation.propTypes = {
     education:PropTypes.array.isRequired
-}
+};
 
-export default ProfileEducation   
+export default ProfileEducation;
