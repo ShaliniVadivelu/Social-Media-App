@@ -39,6 +39,7 @@ const Education = ({ education, deleteEducation }) => {
 
         </table>
     </Fragment>
+    
   );
 };
 
