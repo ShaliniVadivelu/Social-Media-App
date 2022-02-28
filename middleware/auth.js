@@ -17,6 +17,7 @@ module.exports = function(req, res, next) {
         const decoded = jwt.verify(token, config.get('jwtSecret'));
 
         req.user = decoded.user;
+        // calling the next. when we call this fn, next piece of middleware will going to run 
         next();
     } catch (err) {
         res.status(401).json( { msg: 'Token is not valid'});
