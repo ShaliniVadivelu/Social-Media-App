@@ -1,6 +1,6 @@
 const express = require('express');
 const connectDB = require('./config/db');
-const path = require ('');
+const path = require ('path');
 //our application
 const app= express();
 
@@ -24,7 +24,7 @@ if (process.env.NODE_ENV === 'production') {
     app.use (express.static('client/build'));
 
     app.get('*',(req, res) => {
-        res.sendFile(path.resolve(_dirname, 'client', 'build', 'index.html'));
+        res.sendFile(path.resolve(__dirname,'client', 'build', 'index.html'));
     });
 }
 
