@@ -27,11 +27,9 @@ const PostItem = ({
       {text}
     </p>
      <p class="post-date">
-        Posted on <Moment format='YYYY/MM/DD'> {date} </Moment>
+        Posted on <Moment format='DD/MM/YYYY'> {date} </Moment>
     </p>
-
-    { showActions && (
-      <Fragment> 
+    {showActions && <Fragment>
         <button 
         onClick={e => addLike(_id)} 
         type="button" class="btn btn-light">
@@ -62,8 +60,8 @@ const PostItem = ({
           <i class="fas fa-times"/>
       </button>
         )}
-    </Fragment>
-    )}
+        </Fragment>
+      }
   </div>
 </div>
 );
