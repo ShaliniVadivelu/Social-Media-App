@@ -47,9 +47,9 @@ export const addLike = id => async dispatch => {
 };
 
 //Remove Like
-export const removeLike = (id) => async (dispatch) => {
+export const removeLike = id => async dispatch => {
     try {
-      const res = await axios.put(`/posts/unlike/${id}`);
+      const res = await axios.put(`/api/posts/unlike/${id}`);
   
       dispatch({
         type: UPDATE_LIKES,
@@ -160,7 +160,7 @@ export const deleteComment = (postId, commentId ) => async dispatch => {
             payload: commentId
         });
 
-        dispatch(setAlert('Comment Deleted', 'sucess'));
+        dispatch(setAlert('Comment Deleted', 'success'));
     } catch (err) {
         dispatch ({
             type: POST_ERROR,
