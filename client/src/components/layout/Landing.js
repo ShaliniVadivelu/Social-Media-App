@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const Landing = (isAuthenticated) => {
   // as we dont want to see the landing page when we click the devconnector in dashboard page
   if (isAuthenticated) {
-    return <Redirect to='/dashboard' />;
+    return <Redirect to='/dashboard'/>;
   }
     return (
         <section className="landing">
