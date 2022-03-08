@@ -48,7 +48,7 @@ async (req, res) => {
 
     try {
     // see if user exists
-    // it tells like await and findOne will search the user by email
+    // to select data from collections in MongoDB findOne method is used.It makes the user to wait util the returns the result of the promise
         let user= await User.findOne({ email}); 
 
         if (user) {
