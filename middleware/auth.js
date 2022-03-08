@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 // using config becoz we need the Secret
 const config = require('config');
 
-//middleware fn it takes 3 things(req,res,next), it has access to request-access cycle, next is a callback
+//middleware fn it takes 3 things(req,res,next), it has access to request-response cycle, next is a callback
 module.exports = function(req, res, next) {
     // Get token from header
     const token = req.header('x-auth-token');

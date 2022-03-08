@@ -8,7 +8,7 @@ const jwt = require ('jsonwebtoken');
 const config = require ('config');
 
 /* it is used to validate and response the user's stuff, like if user missed any of the required 
-field express-validator takes place and remain the user to fill it.*/
+field, express-validator takes place and remain the user to fill it.*/
 const { check, validationResult } = require('express-validator'); 
 
 //to pull name, email etc., pulling User module
@@ -19,8 +19,8 @@ const User = require('../../models/User');
 // @access    Public
 router.post(
     '/',
-    [
-        check('name', 'Name is required')
+    [   // below checks are sec params of post router.
+        check('name', 'Name is req uired')
         // returns elements that do not match a certain criteria.
             .not()    
         // It is used to check whether a list, array, string, object etc is empty or not.  
@@ -34,7 +34,7 @@ router.post(
             .isLength({ min: 6})    
 ],
 async (req, res) => {      
-    // set errors and validationresult which takes in the request
+    // set errors. It extracts the validation error from req and makes them available in a errors obj.
     const errors = validationResult(req);  
 
     // if any of the required info is missing it will be a bad request
