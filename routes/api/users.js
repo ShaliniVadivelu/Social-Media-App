@@ -20,7 +20,7 @@ const User = require('../../models/User');
 router.post(
     '/',
     [   // below checks are sec params of post router.
-        check('name', 'Name is req uired')
+        check('name', 'Name is required')
         // returns elements that do not match a certain criteria.
             .not()    
         // It is used to check whether a list, array, string, object etc is empty or not.  
