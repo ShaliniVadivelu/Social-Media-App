@@ -2,6 +2,7 @@ const express = require('express');
 // initialize express to app variable
 const connectDB = require('./config/db');
 const path = require ('path');
+// declaring a variable app to access our app.
 const app= express();
 
 // Connect Database
@@ -23,7 +24,6 @@ app.use('/api/posts', require('./routes/api/posts'));
 if (process.env.NODE_ENV === 'production') {
     // Set static folder. Built in middleware
     app.use (express.static('client/build'));
-   
     
     // used to send an response if none of the route match the request.
     app.get('*',(req, res) => {
