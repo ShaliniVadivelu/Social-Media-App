@@ -13,7 +13,8 @@ const User = require ('../../models/User');
 // @access    Public
 router.get('/', auth, async (req, res) => {
     try {
-        const user = await User.findById(req.user.id).select('-password');
+        // findById method is used to find a single document by use its _id field.
+        const user = await User.findById(req.user.id).select('-password'); // we dont need password
         res.json(user);
     } catch(err) {
         console.error(err.message);
