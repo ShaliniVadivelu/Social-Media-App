@@ -1,3 +1,4 @@
+// used to dispaly all the post done by the users using map array method.
 import React, {Fragment, useEffect} from 'react'
 import PropTypes from 'prop-types';
 import {connect } from 'react-redux';

@@ -103,7 +103,7 @@ async (req, res) => {
     } catch (err){
         console.error(err.message);
         // if something goes wrong it going to be server error
-        res.status(500).send('Server error');     
+        res.status(500).send('Server error');    
      }
 }
 );
