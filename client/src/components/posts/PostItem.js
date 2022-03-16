@@ -1,3 +1,4 @@
+// this file is to see the details with user name and post date all those things with like and unlike
 import React, {Fragment} from 'react'
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -27,7 +28,8 @@ const PostItem = ({
       {text}
     </p>
      <p class="post-date">
-        Posted on <Moment format='DD/MM/YYYY'> {date} </Moment>
+        Posted on
+        <Moment format='DD/MM/YYYY'>{date}</Moment>
     </p>
     {showActions && <Fragment>
         <button 
